@@ -106,10 +106,9 @@ with tab2:
     st.header("Data Exploration & Visualizations")
     st.write("Exploratory Data Analysis of the Heart Disease Dataset")
 
-    # 这里的标题保持不变，只把对应的文件名换成你简短的名字
     fig_files_ch2 = [
-        ("Figure 2.1: Target Class Distribution", "figure2_1.png"),
-        ("Figure 2.2: Missing Value Counts per Feature", "figure2_2.png"),
+        ("Figure 2.1: Target Class Distribution", "figure2.1.png"),
+        ("Figure 2.2: Missing Value Counts per Feature", "figure2.2.png"),
         ("Figure 2.3: Histograms and KDE Plots for Continuous Biometric Features", "figure2.3.png"),
         ("Figure 2.4: Correlation Matrix of Continuous Clinical Features", "figure2.4.png")
     ]
@@ -130,7 +129,7 @@ with tab3:
     st.write("Confusion matrices, ROC curves, and algorithm comparison charts.")
 
     fig_files_ch4_5 = [
-        ("Figure 4.1: Algorithm Accuracy Comparison", "figure_4_1.png"),
+        ("Figure 4.8: Model Evaluation & Comparison", "figure4.8.png"),
     ]
 
     for title, filename in fig_files_ch4_5:
