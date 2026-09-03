@@ -106,12 +106,12 @@ with tab2:
     st.header("Data Exploration & Visualizations")
     st.write("Exploratory Data Analysis of the Heart Disease Dataset")
 
-    # 依次展示你第二章生成的图表（确保你的 GitHub 仓库里也上传了这些图片 png 文件）
+    # 这里的标题保持不变，只把对应的文件名换成你简短的名字
     fig_files_ch2 = [
-        ("Figure 2.1: Target Class Distribution", "figure_2_1_target_distribution.png"),
-        ("Figure 2.2: Missing Value Counts per Feature", "figure_2_2_missing_values.png"),
-        ("Figure 2.3: Histograms and KDE Plots for Continuous Biometric Features", "figure_2_3_numeric_distributions.png"),
-        ("Figure 2.4: Correlation Matrix of Continuous Clinical Features", "figure_2_4_correlation_heatmap.png")
+        ("Figure 2.1: Target Class Distribution", "figure_2_1.png"),
+        ("Figure 2.2: Missing Value Counts per Feature", "figure_2_2.png"),
+        ("Figure 2.3: Histograms and KDE Plots for Continuous Biometric Features", "figure_2_3.png"),
+        ("Figure 2.4: Correlation Matrix of Continuous Clinical Features", "figure_2_4.png")
     ]
 
     for title, filename in fig_files_ch2:
@@ -119,7 +119,7 @@ with tab2:
         if os.path.exists(filename):
             st.image(filename, use_container_width=True)
         else:
-            st.info(f"Image `{filename}` not uploaded yet. (You can generate and upload it from your Jupyter Notebook)")
+            st.info(f"Image `{filename}` not uploaded yet. Please upload it to your GitHub repository.")
         st.markdown("---")
 
 # ==========================================
@@ -130,10 +130,7 @@ with tab3:
     st.write("Confusion matrices, ROC curves, and algorithm comparison charts.")
 
     fig_files_ch4_5 = [
-        ("Figure 4.1 & 4.2: Logistic Regression Evaluation", "fig_lr_eval.png"), # 如果有独立保存的图可以写在这里
-        ("Figure 4.3 & 4.4: KNN Evaluation", "figure_4_4_knn_roc_curve.png"),
-        ("Figure 4.5 & 4.6: Random Forest Evaluation", "fig_rf_roc_curve.png"),
-        ("Figure 4.7 & 4.8: Gradient Boosting Evaluation", "fig_gb_roc_curve.png")
+        ("Figure 4.1: Algorithm Accuracy Comparison", "figure_4_1.png"),
     ]
 
     for title, filename in fig_files_ch4_5:
@@ -141,5 +138,5 @@ with tab3:
         if os.path.exists(filename):
             st.image(filename, use_container_width=True)
         else:
-            st.info(f"Image `{filename}` not uploaded yet.")
+            st.info(f"Image `{filename}` not uploaded yet. Please upload it to your GitHub repository.")
         st.markdown("---")
