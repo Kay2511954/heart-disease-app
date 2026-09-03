@@ -1,7 +1,8 @@
-import pandas as pd
-import streamlit as st
+import os
 import pickle
 import numpy as np
+import pandas as pd
+import streamlit as st
 
 # 页面基础配置
 st.set_page_config(
@@ -22,9 +23,12 @@ try:
 except Exception as e:
     st.error(f"模型加载失败，请确保 Classifier.pkl 已上传且格式正确。错误信息: {e}")
 
-# 创建顶部的多标签页（和别人的一样！）
+# 创建多标签页
 tab1, tab2, tab3 = st.tabs(["Prediction", "Data Exploration", "Model Performance"])
 
+# ==========================================
+# TAB 1: 预测页面
+# ==========================================
 with tab1:
     st.header("Cardiac Risk Prediction Panel")
     st.write("Please input the patient's clinical parameters below:")
@@ -52,7 +56,6 @@ with tab1:
         Stress_Level = st.selectbox("Stress Level", ["Low", "Medium", "High"])
         Sugar_Consumption = st.selectbox("Sugar Consumption", ["Low", "Medium", "High"])
 
-    # 附加风险项
     st.markdown("### Clinical History & Indicators")
     col4, col5 = st.columns(2)
     with col4:
@@ -64,7 +67,6 @@ with tab1:
         High_LDL_Cholesterol = st.selectbox("High LDL Cholesterol Indicator", ["No", "Yes"])
 
     if st.button("Evaluate Cardiac Risk", type="primary"):
-        # 构造 DataFrame 输入（必须与训练时的列名一致）
         input_data = pd.DataFrame({
             'Age': [Age],
             'Blood Pressure': [Blood_Pressure],
@@ -97,17 +99,47 @@ with tab1:
         except Exception as e:
             st.error(f"Prediction failed due to feature mismatch. Details: {e}")
 
+# ==========================================
+# TAB 2: 数据探索图表展示 (Data Exploration)
+# ==========================================
 with tab2:
-    st.header("Data Exploration")
-    st.write("Exploratory Data Analysis and Dataset Overview")
-    # 可以放一些概览指标（跟你的截图呼应）
-    m1, m2, m3 = st.columns(3)
-    m1.metric("Total Features", "20")
-    m2.metric("Target Variable", "Heart Disease Status")
-    m3.metric("Model Used", "Machine Learning Pipeline")
-    st.info("Upload your dataset preview or charts here if needed.")
+    st.header("Data Exploration & Visualizations")
+    st.write("Exploratory Data Analysis of the Heart Disease Dataset")
 
+    # 依次展示你第二章生成的图表（确保你的 GitHub 仓库里也上传了这些图片 png 文件）
+    fig_files_ch2 = [
+        ("Figure 2.1: Target Class Distribution", "figure_2_1_target_distribution.png"),
+        ("Figure 2.2: Missing Value Counts per Feature", "figure_2_2_missing_values.png"),
+        ("Figure 2.3: Histograms and KDE Plots for Continuous Biometric Features", "figure_2_3_numeric_distributions.png"),
+        ("Figure 2.4: Correlation Matrix of Continuous Clinical Features", "figure_2_4_correlation_heatmap.png")
+    ]
+
+    for title, filename in fig_files_ch2:
+        st.subheader(title)
+        if os.path.exists(filename):
+            st.image(filename, use_container_width=True)
+        else:
+            st.info(f"Image `{filename}` not uploaded yet. (You can generate and upload it from your Jupyter Notebook)")
+        st.markdown("---")
+
+# ==========================================
+# TAB 3: 模型表现与评估图表展示 (Model Performance)
+# ==========================================
 with tab3:
-    st.header("Model Performance")
-    st.write("Algorithm evaluation metrics, confusion matrix, and ROC-AUC comparisons.")
-    st.success("Trained using optimized Machine Learning algorithms with cross-validation.")
+    st.header("Model Performance & Evaluation")
+    st.write("Confusion matrices, ROC curves, and algorithm comparison charts.")
+
+    fig_files_ch4_5 = [
+        ("Figure 4.1 & 4.2: Logistic Regression Evaluation", "fig_lr_eval.png"), # 如果有独立保存的图可以写在这里
+        ("Figure 4.3 & 4.4: KNN Evaluation", "figure_4_4_knn_roc_curve.png"),
+        ("Figure 4.5 & 4.6: Random Forest Evaluation", "fig_rf_roc_curve.png"),
+        ("Figure 4.7 & 4.8: Gradient Boosting Evaluation", "fig_gb_roc_curve.png")
+    ]
+
+    for title, filename in fig_files_ch4_5:
+        st.subheader(title)
+        if os.path.exists(filename):
+            st.image(filename, use_container_width=True)
+        else:
+            st.info(f"Image `{filename}` not uploaded yet.")
+        st.markdown("---")
