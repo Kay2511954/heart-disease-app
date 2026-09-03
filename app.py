@@ -108,10 +108,10 @@ with tab2:
 
     # 这里的标题保持不变，只把对应的文件名换成你简短的名字
     fig_files_ch2 = [
-        ("Figure 2.1: Target Class Distribution", "figure_2_1.png"),
-        ("Figure 2.2: Missing Value Counts per Feature", "figure_2_2.png"),
-        ("Figure 2.3: Histograms and KDE Plots for Continuous Biometric Features", "figure_2_3.png"),
-        ("Figure 2.4: Correlation Matrix of Continuous Clinical Features", "figure_2_4.png")
+        ("Figure 2.1: Target Class Distribution", "figure2_1.png"),
+        ("Figure 2.2: Missing Value Counts per Feature", "figure2_2.png"),
+        ("Figure 2.3: Histograms and KDE Plots for Continuous Biometric Features", "figure2.3.png"),
+        ("Figure 2.4: Correlation Matrix of Continuous Clinical Features", "figure2.4.png")
     ]
 
     for title, filename in fig_files_ch2:
